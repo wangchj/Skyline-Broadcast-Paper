@@ -1,0 +1,36 @@
+.dropbox
+*.aux
+*.bak
+*.bbl
+*.blg
+*.dvi
+*.log
+#*.pdf
+*.sav
+
+###################
+# Windows OS Files
+###################
+
+# Windows image file caches
+Thumbs.db 
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+
+###################
+# Mac OS X Files
+###################
+
+.DS_Store
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
