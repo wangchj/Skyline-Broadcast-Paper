@@ -1,0 +1,123 @@
+\documentclass{sig-alternate}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{color}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{flushend}
+\usepackage{cite,float}
+\usepackage[normalem]{ulem}
+\usepackage{verbatim}
+%\usepackage{subfig}
+\usepackage{subfigure}
+
+%\newtheorem{theorem}{Theorem}[section]
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{axiom}{Axiom}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}{Definition}[section]
+%
+%\newcounter{defCount}
+%\newenvironment{definition}[1][Definition]{
+%    \refstepcounter{defCount}
+%    \begin{trivlist}
+%    \item[\hskip \labelsep
+%        {\bfseries Definition \arabic{defCount} #1}]}
+%    {\end{trivlist}}
+
+\newcounter{coroCount}
+\newenvironment{corollary}[1][]{
+    \refstepcounter{coroCount}
+    \begin{trivlist}
+    \item[\hskip \labelsep
+        {\bfseries Corollary \arabic{coroCount} #1}]}
+    {\end{trivlist}}
+
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\eat}[1]{}
+
+\begin{document}
+
+\title{Efficient Evaluation of Skyline Queries in Wireless Data Broadcast Environments}
+
+\numberofauthors{2}
+
+\author
+{
+ \alignauthor Chih-Jye Wang\\
+ \affaddr{Dept. of Computer Science and Software Engineering}\\
+ \affaddr{Auburn University}\\
+ \affaddr{Auburn, AL 36849, USA}\\
+ \email{wangchj@auburn.edu}
+ \alignauthor Wei-Shinn Ku\\
+ \affaddr{Dept. of Computer Science and Software Engineering}\\
+ \affaddr{Auburn University}\\
+ \affaddr{Auburn, AL 36849, USA}\\
+ \email{weishinn@auburn.edu}
+}
+
+\conferenceinfo{GIS'12,} {November 6-9, 2012. Redondo Beach, CA,
+USA}\CopyrightYear{2012}
+
+\maketitle
+
+\begin{abstract}
+Skyline is a popular query type which retrieves data objects that
+are not dominated by any other object with respect to multiple
+attributes. Skyline queries have broad applications; however,
+limited studies have been done on skyline in the broadcast data
+model. No study has been done on flexible skyline query
+evaluations in this model that can handle a combination of minimum
+and maximum attributes. In this paper, we propose the depth-first
+distributed index (DFDI) and the skyline algorithms that
+incorporate DFDI to efficiently evaluate skyline in broadcast
+environments. Our extensive simulations show that the proposed
+algorithms can answer skyline queries in broadcast environments
+effectively and efficiently.
+\end{abstract}
+
+\category{H.2.8}{Database Management}{Database
+Application}[Spatial databases and GIS]
+
+\terms{Algorithms and Experimentation}
+
+\keywords{Data broadcast, Skyline query, Location-based services.} % NOT required for Proceedings
+
+\section{Introduction}\label{sec-intro}
+\input{intro}
+
+\section{Preliminary}\label{sec-prelim}
+\input{prelim}
+
+\section{Tree-based Distributed Index}\label{sec-index}
+\input{depth}
+
+\section{Pruning Region Broadcast Skyline}\label{sec-pruning}
+\input{pruning}
+
+\section{Experimental Evaluation}\label{sec-exp}
+\input{experiment}
+
+\section{Related Work}\label{sec-related}
+\input{related}
+
+\section{Conclusion}\label{sec-conc}
+\input{conc}
+
+\section*{Acknowledgements}
+\input{ack}
+
+%\small {\section*{Acknowledgments}
+
+
+\bibliographystyle{abbrv}
+\bibliography{bibliography}
+
+\end{document}
