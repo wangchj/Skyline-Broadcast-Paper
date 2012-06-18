@@ -1,0 +1,32 @@
+In this paper, we presented a broadcast data stream allocation technique
+(DFDI) that utilize the R-Tree and performs a depth-first traversal of the
+index to create a distributed index. The goal of DFDI are to facilitate
+query processing from broadcast data, to reduce index overhead (IP) and,
+to improve the initial index prob. DFDI is able to achieve all these with
+reasonable efficiency. DFDI is a flexible R-Tree based index and
+well-supports skyline queries as well as other data query types. The allocation
+distributes $b^h$ number of index segments among the broadcast program to
+reduce initial index at the same time keeps the index overhead low. The simulation
+results for index percentage show DFDI performs very well with 2 levels of
+replication and follow the efficiency of one-time index with only $16\%$
+increase in index overhead.
+
+The simulation result show that the approach also performs well with data
+of higher dimensions. The index overhead decreases as the number of records
+remain constant and the number of data dimension increase. This is due to
+the growth of dimensionality does not make the index tree grow "taller" and
+does not incur the cost of new nodes when the index grows. The height of
+an index tree does increase as the number of records increase, but as seen
+in Figure~\ref{fig:ip_rc}, the growth of the index is not as fast as the
+growth of the amount of data; therefore, the index overhead decreases as
+records increase.
+
+In addition, we introduced point-based and index-based pruning skyline
+algorithms. The experiments shows both algorithms are capable of evaluate
+skyline queries of combined $min$ and $max$ attributes with reasonable
+tuning time and dominance tests. The index-based skyline had
+always performed better than the point-based skyline, in some cases several
+factors. The performance of the algorithms is also affected by the data
+arrangement and R-Tree implementation. From our simulation, we find that
+R-Tree that index records with lower attributes first, performs better for
+$min$ skyline queries, and vice versa.
