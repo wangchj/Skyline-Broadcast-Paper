@@ -236,26 +236,41 @@ If the downloaded item is a data bucket, then skyline is computed from the bucke
 \caption{Index-Based Skyline($\sigma$)} \label{alg:IBSkyline}
 \begin{algorithmic}[1]
 
-\STATE $S \gets \emptyset$
-\STATE $R \gets \emptyset$
-\STATE $index \gets$ search first index segment
-\STATE $queue.enqueue(index.pairs(mbr, time))$
-\WHILE{$queue$ is not empty}
-    \STATE $bucket \gets GetBucket(queue.dequeue)$
-    \IF{$bucket$ is index bucket}
-        \FORALL{$entry \gets pair(mbr, time)$ in $bucket$}
-            \IF{$R$ does not cover $entry$}
-                \STATE $queue.enqueue(entry)$
-                \STATE $R' \gets GetPRegions(e.mbr, \sigma)$
-                \STATE $Prune(S, R')$
-                \STATE $Prune(queue, R')$
-                \STATE $R \gets R \cup R'$
-            \ENDIF
-        \ENDFOR
+\STATE S $\gets$ $\emptyset$
+\STATE R $\gets$ $\emptyset$
+\REPEAT
+    \STATE next $\gets$ null
+
+    \IF {first iteration}
+        \STATE bucket $\gets$ search first index bucket
     \ELSE
-        \STATE $S \gets S \cup Skyline(bucket, \sigma)$
+        \STATE bucket $\gets$ GetBucket(next)
     \ENDIF
-\ENDWHILE \RETURN $S$
+
+    \IF {!IsRootNode(bucket)}
+        \STATE next $\gets$ bucket.time\_of\_next\_index\_segment
+    \ENDIF
+
+    \WHILE{!stack.IsEmpty}
+        \IF {not first iteration}
+            \STATE bucket $\gets$ GetBucket(stack.pop)
+        \ENDIF
+        \IF {IsIndex(bucket)}
+            \FOR {$E_i$ in index, i = b to 1}
+                \IF {!Covers(R, $E_i$)}
+                    \STATE stack.push($E_i$)
+                    \STATE R' $\gets$ GetPRegions(e.mbr, $\sigma$)
+                    \STATE Prune(S, R')
+                    \STATE Prune(stack, R')
+                    \STATE R $\gets$ R $\cup$ R'
+                \ENDIF
+            \ENDFOR
+        \ELSE
+            \STATE S $\gets$ S $\cup$ Skyline(bucket, $\sigma$)
+        \ENDIF
+    \ENDWHILE
+\UNTIL {next = 0}
+\RETURN S
 \end{algorithmic}
 \end{algorithm}
 
