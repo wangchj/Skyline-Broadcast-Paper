@@ -37,11 +37,25 @@ y4=[
 ]
 
 
-plot(x, y1, 'b-+', x, y2, 'r-o', x, y3, 'g-*', x, y4, 'k-x');
-ylabel('Tuning Time (bytes)');
-xlabel('Dimensions');
-legend('P-B all min', 'I-B all min', 'P-B all max', 'I-B all max', 'location', 'NorthWest');
-axis tight
-set(gca, 'XTick', x)
+%plot(x, y1, 'b-+', x, y2, 'r-o', x, y3, 'g-*', x, y4, 'k-x');
+%ylabel('Tuning Time (bytes)');
+%xlabel('Dimensions');
+%legend('P-B all min', 'I-B all min', 'P-B all max', 'I-B all max', 'location', 'NorthWest');
+%axis tight
+%set(gca, 'XTick', x)
 %title('Execution Time vs Image Size');
 %print -deps execution_time.eps
+
+figure1 = figure;
+axes1 = axes('Parent',figure1,'FontSize',18,'FontName','Arial');
+plot1 = plot(x,[y1, y2, y3, y4],'Parent',axes1);
+set(plot1(1),'Marker','+','Color','b','DisplayName','RPS all min');
+set(plot1(2),'Marker','o','Color','r','DisplayName','IPS all min');
+set(plot1(3),'Marker','*','Color','g','DisplayName','RPS all max');
+set(plot1(4),'Marker','x','Color','k','DisplayName','IPS all max');
+
+ylabel('Tuning Time (bytes)','FontSize',18,'FontName','Arial');
+xlabel('Dimensions','FontSize',18,'FontName','Arial');
+
+legend1 = legend(axes1,'show');
+set(legend1, 'FontName','Arial', 'FontSize', 16);

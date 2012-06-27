@@ -54,11 +54,27 @@ y6=[
     4920 
 ]
 
-plot(x, y1, 'b-+', x, y2, 'r-o', x, y3, 'g-*', x, y4, 'k-x', x, y5, 'c-v', x, y6, 'm-p');
-ylabel('Tuning Time (bytes)');
-xlabel('Dimensions');
-legend('P-B Uniform', 'I-B Uniform', 'P-B Rising', 'I-B Rising', 'P-B Falling', 'I-B Falling', 'location', 'NorthWest');
-axis tight
-set(gca, 'XTick', x)
+%plot(x, y1, 'b-+', x, y2, 'r-o', x, y3, 'g-*', x, y4, 'k-x', x, y5, 'c-v', x, y6, 'm-p');
+%ylabel('Tuning Time (bytes)');
+%xlabel('Dimensions');
+%legend('P-B Uniform', 'I-B Uniform', 'P-B Rising', 'I-B Rising', 'P-B Falling', 'I-B Falling', 'location', 'NorthWest');
+%axis tight
+%set(gca, 'XTick', x)
 %title('Execution Time vs Image Size');
 %print -deps execution_time.eps
+
+figure1 = figure;
+axes1 = axes('Parent',figure1,'FontSize',18,'FontName','Arial');
+plot1 = plot(x,[y1, y2, y3, y4, y5, y6],'Parent',axes1);
+set(plot1(1),'Marker','+','Color','b','DisplayName','RPS Uniform');
+set(plot1(2),'Marker','o','Color','r','DisplayName','IPS Uniform');
+set(plot1(3),'Marker','*','Color','g','DisplayName','RPS Rising');
+set(plot1(4),'Marker','x','Color','k','DisplayName','IPS Rising');
+set(plot1(5),'Marker','v','Color','c','DisplayName','IPS Falling');
+set(plot1(6),'Marker','p','Color','m','DisplayName','IPS Falling');
+
+ylabel('Tuning Time (bytes)','FontSize',18,'FontName','Arial');
+xlabel('Dimensions','FontSize',18,'FontName','Arial');
+
+legend1 = legend(axes1,'show');
+set(legend1, 'FontName','Arial', 'FontSize', 16);

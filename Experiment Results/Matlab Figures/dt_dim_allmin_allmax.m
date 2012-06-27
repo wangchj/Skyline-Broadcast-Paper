@@ -35,13 +35,17 @@ y4=[
     98835
     99640
 ]
+figure1 = figure;
+axes1 = axes('Parent',figure1,'FontSize',18,'FontName','Arial');
+plot1 = plot(x,[y1, y2, y3, y4],'Parent',axes1);
+%plot(x, y1, 'b-^', x, y2, 'r-o', x, y3, 'g-*', x, y4, 'k-x');
+set(plot1(1),'Marker','^','Color',[0 0 1],'DisplayName','RPS all min');
+set(plot1(2),'Marker','o','Color',[1 0 0],'DisplayName','IPS all min');
+set(plot1(3),'Marker','*','Color',[0 1 0],'DisplayName','RPS all max');
+set(plot1(4),'Marker','x','Color',[0 0 0],'DisplayName','IPS all max');
 
+ylabel('Dominance Tests','FontSize',18,'FontName','Arial');
+xlabel('Dimensions','FontSize',18,'FontName','Arial');
 
-plot(x, y1, 'b-^', x, y2, 'r-o', x, y3, 'g-*', x, y4, 'k-x');
-ylabel('Dominance Tests');
-xlabel('Dimensions');
-legend('P-B all min', 'I-B all min', 'P-B all max', 'I-B all max', 'location', 'NorthWest');
-axis tight
-set(gca, 'XTick', x)
-%title('Execution Time vs Image Size');
-%print -deps execution_time.eps
+legend1 = legend(axes1,'show');
+set(legend1, 'FontName','Arial', 'FontSize', 16);
