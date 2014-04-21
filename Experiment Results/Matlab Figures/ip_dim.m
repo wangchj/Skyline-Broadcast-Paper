@@ -41,7 +41,7 @@ axes1 = axes('Parent',figure1,'FontSize',18,'FontName','Arial');
 plot1 = plot(x,[y1, y2, y3],'Parent',axes1);
 set(plot1(1),'Marker','+','Color','b','DisplayName','One-Time Index');
 set(plot1(2),'Marker','o','Color','r','DisplayName','(1, m) Index, m = 2');
-set(plot1(3),'Marker','*','Color','g','DisplayName','DFDI, r = 2');
+set(plot1(3),'Marker','*','Color','g','DisplayName','TDI, r = 2');
 
 ylabel('Index Percentage','FontSize',18,'FontName','Arial');
 xlabel('Dimensions','FontSize',18,'FontName','Arial');
